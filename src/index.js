@@ -1,4 +1,6 @@
 const http = require('http');
+const tasksHandler = require('./tasksHandler');
+
 
 const server = http.createServer((req, res)=> {
     const { url, method } = req;
@@ -11,10 +13,10 @@ const server = http.createServer((req, res)=> {
                 res.write(JSON.stringify({message: 'Server is working'}));
                 res.end();
             
-            } else {
-                res.writeHead(200, {'Content-Type':'application/json'});
-                res.write(JSON.stringify({message: '404 NOT FOUND'}));
-                res.end();
+            } 
+
+            if (url === "/tasks") {
+                tasksHandler.getTaskHandler(res, req);
             }
        // case "POST":
         //case  "PUT":
