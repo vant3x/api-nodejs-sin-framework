@@ -1,0 +1,17 @@
+{
+  "name": "node-api-without-framework",
+  "version": "1.0.0",
+  "description": "una api basica en node sin usar ningún framework externo",
+  "main": "\t",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "alevante",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
