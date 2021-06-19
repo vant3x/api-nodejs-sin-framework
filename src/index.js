@@ -12,19 +12,25 @@ const server = http.createServer((req, res)=> {
                 res.write(JSON.stringify({message: 'Server is working'}));
                 res.end();            
             } 
-
             if (url === "/tasks") {
-                tasksHandler.getTaskHandler(res, req);
+                tasksHandler.getTaskHandler(req, res);
             }
+            break;
        case "POST":
         if (url === "/tasks") {
-            tasksHandler.createTaskHandler(res, req);
+            tasksHandler.createTaskHandler(req, res);
         }
+            break;
         case  "PUT":
-         if (url === "/tasks?id=1")   {
+         if (url.includes("/tasks?id="))   {
                 tasksHandler.updateTaskHandler(req, res);
             }
-        //case "DELETE":
+          break;
+        case "DELETE":
+            if (url.includes("/tasks?id="))   {
+                tasksHandler.deleteTaskHandler(req, res);
+            }
+            break;
         //default:
 
     }
